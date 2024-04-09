@@ -110,4 +110,4 @@ export default defineComponent({
 .Notebook-items-item.active {
     display: flex;
 }
-</style>./lib/EventBus
+</style>

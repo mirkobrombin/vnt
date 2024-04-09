@@ -1,0 +1,243 @@
+/* 
+    -----------------------------------
+    RESET CSS
+    -----------------------------------
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/*
+    -----------------------------------
+    COMMON STYLES
+    -----------------------------------
+*/
+
+html {
+    background-color: transparent;
+    text-align: center;
+}
+
+body {
+    margin: 0;
+    color: var(--text-primary);
+    user-select: none;
+    -webkit-user-select: none;
+    overflow: hidden;
+    cursor: default;
+}
+
+body,
+input,
+button,
+select,
+textarea {
+    font-family: "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+        sans-serif;
+}
+
+#app {
+    height: 100vh;
+    text-align: center;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/*
+    -----------------------------------
+    FONTS
+    -----------------------------------
+*/
+@font-face {
+    font-family: 'Material Symbols Outlined';
+    font-style: normal;
+    src: url(../assets/fonts/material/material-symbols.woff2) format('woff2');
+}
+
+.mdi {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+}
+
+@font-face {
+    font-family: 'Noto Sans';
+    font-weight: 400;
+    font-style: normal;
+    src: local(""),
+        url("../assets/fonts/noto/Noto-Sans-regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: 'Noto Sans';
+    font-weight: 700;
+    font-style: normal;
+    src: local(""),
+        url("../assets/fonts/noto/Noto-Sans-700.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: 'Noto Sans';
+    font-weight: 400;
+    font-style: italic;
+    src: local(""),
+        url("../assets/fonts/noto/Noto-Sans-italic.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: 'Noto Sans';
+    font-weight: 700;
+    font-style: italic;
+    src: local(""),
+        url("../assets/fonts/noto/Noto-Sans-700italic.woff2") format("woff2");
+}

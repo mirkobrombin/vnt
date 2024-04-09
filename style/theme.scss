@@ -1,0 +1,111 @@
+$themes: (
+  light: (
+    // Background colors
+    background-base: #ffffff, 
+    background-elevated: #f5f5f5,
+    background-elevated-2: #e7e7e7,
+    background-elevated-2-hover: #e1e1e1,
+    background-top: #d8d8d8, 
+    background-translucent: rgba(255, 255, 255, 0.88),
+
+    // Shadow
+    shadow-base: none, 
+    shadow-elevated: 0 2px 4px rgba(0, 0, 0, 0.1),
+    shadow-elevated-2: 0 2px 4px rgba(0, 0, 0, 0.041),
+    shadow-top: 0 0 10px rgba(0, 0, 0, 0.2), 
+
+    // Text colors
+    text-primary: #000000,
+    text-primary-alt: #ffffff,
+    text-secondary: #666666, 
+
+    // Border colors
+    border-primary: #e4e4e4,
+    border-secondary: #f8f8f8,
+    border-tertiary: #c7c7c7,
+    
+    // Action suggested colors
+    action-suggested: #2196F3, 
+    action-suggested-hover: #1e84d8,
+    action-suggested-active: #135081,
+    action-suggested-disabled: #aec3db,
+
+    // Action destructive colors
+    action-destructive: #dc3545,
+    action-destructive-hover: #bd2130,
+    action-destructive-active: #991724,
+    action-destructive-disabled: #f0c2c2,
+
+    // Scrollbar
+    scrollbar-thumb: #cfcfcf,
+    scrollbar-thumb-hover: #aaa,
+  ),
+  dark: (
+    // Background colors
+    background-base: #202020,
+    background-elevated: #353535,
+    background-elevated-2: #272727,
+    background-elevated-2-hover: #3C3C3C,
+    background-top: #424242,
+    background-translucent: rgba(36, 36, 36, 0.88),
+
+    // Shadow
+    shadow-base: none,
+    shadow-elevated: 0 2px 4px rgba(0, 0, 0, 0.1),
+    shadow-elevated-2: 0 2px 4px rgba(0, 0, 0, 0.041),
+    shadow-top: 0 0 10px rgba(0, 0, 0, 0.3),
+
+    // Text colors
+    text-primary: #ffffff,
+    text-primary-alt: #000000,
+    text-secondary: #cccccc,
+
+    // Border colors
+    border-primary: #3C3C3C,
+    border-secondary: #2C2C2C,
+    border-tertiary: #4C4C4C,
+    
+    // Action suggested colors
+    action-suggested: #007bff, 
+    action-suggested-hover: #0069d9,
+    action-suggested-active: #044586,
+    action-suggested-disabled: #35393d6b,
+
+    // Action destructive colors
+    action-destructive: #dc3545,
+    action-destructive-hover: #bd2130,
+    action-destructive-active: #991724,
+    action-destructive-disabled: #4b3838,
+
+    // Scrollbar
+    scrollbar-thumb: #3f3f3f,
+    scrollbar-thumb-hover: #555,
+  )
+);
+
+@mixin apply-theme($theme-name) {
+  $theme-map: map-get($themes, $theme-name);
+  @each $property, $value in $theme-map {
+    --#{$property}: #{$value};
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    @include apply-theme(dark);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    @include apply-theme(light);
+  }
+}
+
+.dark {
+  @include apply-theme(dark);
+}
+
+.light {
+  @include apply-theme(light);
+}

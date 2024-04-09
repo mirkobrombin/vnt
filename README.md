@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="vnt.svg" width="200" alt="Vue Native Toolkit logo">
+  <img src="logo.svg" width="200" alt="Vue Native Toolkit logo">
   <h1>Vue Native Toolkit</h1>
 </div>
 

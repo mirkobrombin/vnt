@@ -22,13 +22,23 @@
   "author": "Mirko Brombin",
   "license": "GPL-3.0-or-later",
   "dependencies": {
-    "vue": "^3.3.4",
-    "@xterm/xterm": "^5.3.0",
-    "@xterm/addon-fit": "^0.10.0"
+    "@xterm/addon-fit": "^0.10.0",
+    "@xterm/xterm": "^5.5.0",
+    "mitt": "^3.0.1",
+    "vue": "^3.3.4"
   },
   "devDependencies": {
     "sass": "^1.74.1",
     "sass-loader": "^14.1.1",
     "typescript": "^5.0.2"
-  }
+  },
+  "files": [
+    "assets",
+    "lib",
+    "plugin",
+    "style",
+    "types",
+    "widgets",
+    "internal"
+  ]
 }

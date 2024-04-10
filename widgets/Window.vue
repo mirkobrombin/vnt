@@ -10,7 +10,6 @@
 </template>
 
 <script lang="ts">
-import { Window } from '@tauri-apps/api/window'
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -24,30 +23,28 @@ export default defineComponent({
     async mounted() {
         console.log("Window mounted");
 
-        if (this.$engine.isTauri()) {
-            Window.getCurrent().listen('tauri://resize', () => {
-                const _window = this.$refs.window as HTMLElement;
-                const screenHeight = screen.availHeight - 20;
-                if (_window) {
-                    Window.getCurrent().isMaximized().then((maximized) => {
-                        this.maximized = maximized || _window.clientHeight === screenHeight;
-                    });
-                }
-            });
+        this.$engine.onResize(() => {
+            const _window = this.$refs.window as HTMLElement;
+            const screenHeight = screen.availHeight - 20;
+            if (_window) {
+                this.$engine.isMaximized().then((maximized) => {
+                    this.maximized = maximized || _window.clientHeight === screenHeight;
+                });
+            }
+        });
 
-            // TODO: testing theme change detection, remove later
-            await Window.getCurrent().theme().then((theme) => {
-                console.log("----------> detected theme", theme);
-            });
-            await Window.getCurrent().listen('tauri://theme-changed', (theme) => {
-                console.log("----------> theme changed", theme);
-            });
-        }
+        // TODO: testing theme change detection, remove later
+        const theme = await this.$engine.getTheme();
+        console.log("----------> detected theme", theme);
+
+        this.$engine.onThemeChange((theme) => {
+            console.log("----------> theme changed", theme);
+        });
 
         window.addEventListener('resize', () => {
             this.resizing = true;
 
-            let windowSizes = [];
+            let windowSizes = [] as number[];
             const interval = setInterval(() => {
                 const _window = this.$refs.window as HTMLElement;
                 if (_window) {
@@ -60,13 +57,11 @@ export default defineComponent({
                 this.resizing = false;
             }, 600);
 
-            if (this.$engine.isTauri()) {
-                Window.getCurrent().isMaximized().then((maximized) => {
-                    if (maximized) {
-                        this.maximized = true;
-                    }
-                });
-            }
+            this.$engine.isMaximized().then((maximized) => {
+                if (maximized) {
+                    this.maximized = true;
+                }
+            });
         });
     },
 });

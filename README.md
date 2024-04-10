@@ -15,11 +15,23 @@ vnt is currently in early development and not yet published to npm. To use it, y
 {
   "dependencies": {
     "vnt": "git+https://github.com/mirkobrombin/vnt.git"
-    }
+  }
 }
 ```
 
 and then run `npm install` or `pnpm install` to install the package and its dependencies.
+
+In your Vue project, you can use vnt as a plugin in your entry file.
+
+```javascript
+import { createApp } from "vue";
+import App from "./App.vue";
+import vnt from "vnt";
+
+const app = createApp(App);
+app.use(vnt);
+app.mount("#app");
+```
 
 ### How to make desktop apps with vnt?
 

@@ -7,7 +7,6 @@
 </template>
 
 <script lang="ts">
-import { Window } from '@tauri-apps/api/window'
 import { defineComponent, nextTick } from "vue";
 
 export default defineComponent({
@@ -22,7 +21,9 @@ export default defineComponent({
         console.log('PopOver mounted');
         this.setPopoverPosition();
 
-        Window.getCurrent().listen('tauri://resize', this.setPopoverPosition);
+        this.$engine.onResize(() => {
+            this.setPopoverPosition();
+        });
         document.addEventListener('click', this.handleClickOutside);
     },
     methods: {

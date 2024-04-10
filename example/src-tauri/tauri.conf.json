@@ -1,0 +1,40 @@
+{
+  "build": {
+    "beforeDevCommand": "pnpm dev",
+    "beforeBuildCommand": "pnpm build",
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:1420"
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  },
+  "productName": "example",
+  "version": "0.0.0",
+  "identifier": "com.github.mirkobrombin.vnt-example",
+  "plugins": {},
+  "app": {
+    "security": {
+      "csp": null
+    },
+    "windows": [
+      {
+        "title": "example",
+        "width": 800,
+        "height": 600,
+        "minWidth": 480,
+        "minHeight": 600,
+        "decorations": false,
+        "transparent": true,
+        "theme": null
+      }
+    ]
+  }
+}

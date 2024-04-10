@@ -11,8 +11,6 @@ node_modules
 dist
 dist-ssr
 *.local
-example/node_modules
-example/src-tauri/target
 
 # Editor directories and files
 .vscode/*

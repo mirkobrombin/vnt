@@ -19,38 +19,26 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { Window } from '@tauri-apps/api/window'
 
 export default defineComponent({
     name: "TitleBar",
     mounted() {
         console.log("TitleBar mounted");
+        console.log(this.$engine)
     },
     methods: {
         minimizeWindow() {
-            if (this.$engine.isTauri()) {
-                Window.getCurrent().minimize();
-            } else {
-                console.log("Feature not supported in this engine");
-            }
+            this.$engine.minimize();
         },
         async maximizeWindow() {
-            if (this.$engine.isTauri()) {
-                if (await Window.getCurrent().isMaximized()) {
-                    Window.getCurrent().unmaximize();
-                    return;
-                }
-                Window.getCurrent().maximize();
-            } else {
-                console.log("Feature not supported in this engine");
+            if (await this.$engine.isMaximized()) {
+                this.$engine.unmaximize();
+                return;
             }
+            this.$engine.maximize();
         },
         closeWindow() {
-            if (this.$engine.isTauri()) {
-                Window.getCurrent().close();
-            } else {
-                console.log("Feature not supported in this engine");
-            }
+            this.$engine.close();
         },
     },
 });

@@ -2,47 +2,43 @@ import { App } from 'vue';
 
 // lib
 import EventBus from '../lib/EventBus';
+import Engine from '../lib/Engine';
 
 // styles
 import '../style/vnt.css';
 import '../style/theme.scss';
 
-// tools
-import Engine from '../lib/Engine';
-
 // components
-import BaseField from '../BaseField.vue';
-import Button from '../Button.vue';
-import Card from '../Card.vue';
-import Carousel from '../Carousel.vue';
-import ContextArea from '../ContextArea.vue';
-import Dialog from '../Dialog.vue';
-import HBox from '../HBox.vue';
-import Menu from '../Menu.vue';
-import MenuSwitcher from '../MenuSwitcher.vue';
-import Notebook from '../Notebook.vue';
-import Paned from '../Paned.vue';
-import PopOver from '../PopOver.vue';
-import SelectField from '../SelectField.vue';
-import SideLayout from '../SideLayout.vue';
-import Slider from '../Slider.vue';
-import StaticNotebook from '../StaticNotebook.vue';
-import Switcher from '../Switcher.vue';
-import TabsSwitcher from '../TabsSwitcher.vue';
-import Terminal from '../Terminal.vue';
-import TextField from '../TextField.vue';
-import TextRich from '../TextRich.vue';
-import TitleBar from '../TitleBar.vue';
-import VBox from '../VBox.vue';
-import Window from '../Window.vue';
+import BaseField from '../widgets/BaseField.vue';
+import Button from '../widgets/Button.vue';
+import Card from '../widgets/Card.vue';
+import Carousel from '../widgets/Carousel.vue';
+import ContextArea from '../widgets/ContextArea.vue';
+import Dialog from '../widgets/Dialog.vue';
+import HBox from '../widgets/HBox.vue';
+import Menu from '../widgets/Menu.vue';
+import MenuSwitcher from '../widgets/MenuSwitcher.vue';
+import Notebook from '../widgets/Notebook.vue';
+import Paned from '../widgets/Paned.vue';
+import PopOver from '../widgets/PopOver.vue';
+import SelectField from '../widgets/SelectField.vue';
+import SideLayout from '../widgets/SideLayout.vue';
+import Slider from '../widgets/Slider.vue';
+import StaticNotebook from '../widgets/StaticNotebook.vue';
+import Switcher from '../widgets/Switcher.vue';
+import TabsSwitcher from '../widgets/TabsSwitcher.vue';
+import Terminal from '../widgets/Terminal.vue';
+import TextField from '../widgets/TextField.vue';
+import TextRich from '../widgets/TextRich.vue';
+import TitleBar from '../widgets/TitleBar.vue';
+import VBox from '../widgets/VBox.vue';
+import Window from '../widgets/Window.vue';
 
 const VNT = {
-    install(app: App) {
+    install(app: App, engine: Engine) {
         // lib
         app.config.globalProperties.$eventBus = EventBus;
-
-        // tools
-        app.config.globalProperties.$engine = Engine.getInstance();
+        app.config.globalProperties.$engine = engine;
 
         // components
         app.component('BaseField', BaseField);

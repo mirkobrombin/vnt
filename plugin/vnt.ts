@@ -27,7 +27,6 @@ import Slider from '../widgets/Slider.vue';
 import StaticNotebook from '../widgets/StaticNotebook.vue';
 import Switcher from '../widgets/Switcher.vue';
 import TabsSwitcher from '../widgets/TabsSwitcher.vue';
-import Terminal from '../widgets/Terminal.vue';
 import TextField from '../widgets/TextField.vue';
 import TextRich from '../widgets/TextRich.vue';
 import TitleBar from '../widgets/TitleBar.vue';
@@ -59,7 +58,6 @@ const VNT = {
         app.component('StaticNotebook', StaticNotebook);
         app.component('Switcher', Switcher);
         app.component('TabsSwitcher', TabsSwitcher);
-        app.component('Terminal', Terminal);
         app.component('TextField', TextField);
         app.component('TextRich', TextRich);
         app.component('TitleBar', TitleBar);

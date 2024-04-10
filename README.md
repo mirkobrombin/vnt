@@ -27,9 +27,12 @@ In your Vue project, you can use vnt as a plugin in your entry file.
 import { createApp } from "vue";
 import App from "./App.vue";
 import vnt from "vnt";
+import TauriEngine from 'vnt/lib/engines/Tauri'
+import { Window } from '@tauri-apps/api/window'
 
-const app = createApp(App);
-app.use(vnt);
+const app = createApp(App)
+app.use(vnt, new TauriEngine(Window.getCurrent())) // or any other supported engine
+
 app.mount("#app");
 ```
 

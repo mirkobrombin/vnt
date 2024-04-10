@@ -33,7 +33,7 @@ import TitleBar from '../widgets/TitleBar.vue';
 import VBox from '../widgets/VBox.vue';
 import Window from '../widgets/Window.vue';
 
-const VNT = {
+const vnt = {
     install(app: App, engine: Engine) {
         // lib
         app.config.globalProperties.$eventBus = EventBus;
@@ -112,4 +112,4 @@ function generateThemeCSS(theme: { [x: string]: any; }) {
     return css;
 }
 
-export default VNT;
+export default vnt;

@@ -1,6 +1,6 @@
 <template>
     <div class="SideLayout">
-        <Paned :size="_size" :minLeft="265" :leftTrigger="600">
+        <Paned :size="_size" :minLeft="265" :leftTrigger="600" :context="context">
             <template #left>
                 <div class="SideLayout-sidebar">
                     <slot name="sidebar"></slot>
@@ -21,6 +21,9 @@ import { defineComponent } from "vue";
 export default defineComponent({
     name: "SideLayout",
     props: {
+        context: {
+            type: String
+        },
         size: {
             type: Object,
             default: () => ({ left: 30, right: 70 }),
@@ -33,7 +36,7 @@ export default defineComponent({
         };
     },
     mounted() {
-        console.log("SideLayout mounted");
+        console.debug('SideLayout mounted');
         this._size = {
             left: this.size.left,
             right: this.size.right,

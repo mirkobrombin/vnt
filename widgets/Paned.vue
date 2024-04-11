@@ -1,6 +1,6 @@
 <template>
     <div class="Paned" ref="paned" :class="{ 'Paned--resizing': resizing, 'Paned--min-left-reached': minLeftReached }">
-        <button class="Paned-toggle" @click="showLeftOverlay" v-if="minLeftReached">
+        <button class="Paned-toggle" @click="toggleLeftOverlay" v-if="minLeftReached">
             <span class="mdi" v-if="overlayVisible">chevron_left</span>
             <span class="mdi" v-else>chevron_right</span>
         </button>
@@ -25,6 +25,9 @@ import { defineComponent } from "vue";
 export default defineComponent({
     name: "Paned",
     props: {
+        context: {
+            type: String
+        },
         size: {
             type: Object,
             default: () => ({ left: 50, right: 50 }),
@@ -47,12 +50,16 @@ export default defineComponent({
         };
     },
     mounted() {
-        console.log("Paned mounted")
+        console.debug('Paned mounted')
         this._size = this.size as { left: number; right: number };
         this.handleResize();
 
         if (this.leftTrigger > 0) {
             window.addEventListener('resize', this.handleResize);
+        }
+
+        if (this.context) {
+            this.$eventBus.on(`${this.context}-close`, this.mustToggleLeftOverlay);
         }
     },
     methods: {
@@ -82,11 +89,13 @@ export default defineComponent({
         handleResize() {
             this.checkMinLeft();
         },
-        showLeftOverlay() {
+        toggleLeftOverlay() {
             this.overlayVisible = !this.overlayVisible;
         },
-        restoreLeftPanel() {
-            this.overlayVisible = false;
+        mustToggleLeftOverlay() {
+            if (this.overlayVisible) {
+                this.toggleLeftOverlay();
+            }
         },
     },
 });

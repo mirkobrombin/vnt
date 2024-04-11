@@ -6,9 +6,9 @@
     </template>
 
     <template #content>
-      <SideLayout class="Toolkit">
+      <SideLayout class="Toolkit" context="mainLayout">
         <template #sidebar>
-          <MenuSwitcher name="mainMenu" :items="mainSwitcheritems" />
+          <MenuSwitcher name="mainMenu" :items="mainSwitcheritems" :onChange="restorePanel" />
         </template>
         <template #content>
           <StaticNotebook name="mainMenu">
@@ -417,6 +417,9 @@ export default defineComponent({
     togglePopOver() {
       this.popOverShowing = !this.popOverShowing;
       console.log("togglePopOver", this.popOverShowing);
+    },
+    restorePanel() {
+      this.$eventBus.emit("mainLayout-close");
     },
   },
   watch: {

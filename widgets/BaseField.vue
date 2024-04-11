@@ -74,7 +74,7 @@ export default defineComponent({
                 this.isActive = false;
             }
         },
-        inputType() {
+        inputType(): string {
             return this.type;
         },
     },

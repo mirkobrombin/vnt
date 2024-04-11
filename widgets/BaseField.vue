@@ -53,7 +53,7 @@ export default defineComponent({
         };
     },
     mounted() {
-        console.log('BaseField mounted');
+        console.debug('BaseField mounted');
     },
     computed: {
         hasContent() {

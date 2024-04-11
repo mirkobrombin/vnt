@@ -36,7 +36,7 @@ export default defineComponent({
         }
     },
     mounted() {
-        console.log('Carousel mounted');
+        console.debug('Carousel mounted');
         this.slides = Array.from(this.$el.querySelectorAll(".Carousel-slides > *")) as HTMLElement[];
     },
     methods: {

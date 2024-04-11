@@ -26,7 +26,7 @@ export default defineComponent({
         },
     },
     mounted() {
-        console.log('Menu mounted');
+        console.debug('Menu mounted');
     },
 });
 </script>

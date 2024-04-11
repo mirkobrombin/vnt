@@ -51,7 +51,7 @@ export default defineComponent({
         },
     },
     mounted() {
-        console.log('Dialog mounted');
+        console.debug('Dialog mounted');
     },
     computed: {
         classes() {

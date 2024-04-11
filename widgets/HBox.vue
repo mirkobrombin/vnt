@@ -25,7 +25,7 @@ export default defineComponent({
         },
     },
     mounted() {
-        console.log('HBox mounted');
+        console.debug('HBox mounted');
     },
 });
 </script>

@@ -12,7 +12,7 @@ import { defineComponent } from "vue";
 export default defineComponent({
     name: "TextRich",
     mounted() {
-        console.log('TextRich mounted');
+        console.debug('TextRich mounted');
     },
 });
 </script>

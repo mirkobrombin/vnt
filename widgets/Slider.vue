@@ -49,7 +49,7 @@ export default defineComponent({
         };
     },
     mounted() {
-        console.log('Slider mounted');
+        console.debug('Slider mounted');
         this.$nextTick(() => {
             const slider = this.$refs.slider as HTMLElement;
             this.sliderWidth = slider.offsetWidth;

@@ -29,7 +29,7 @@ export default defineComponent({
         },
     },
     mounted() {
-        console.log('Button mounted');
+        console.debug('Button mounted');
     },
     computed: {
         classes() {

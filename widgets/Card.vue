@@ -10,7 +10,7 @@ import { defineComponent } from "vue";
 export default defineComponent({
     name: "Card",
     mounted() {
-        console.log('Card mounted');
+        console.debug('Card mounted');
     },
 });
 </script>

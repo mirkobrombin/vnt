@@ -18,7 +18,7 @@ export default defineComponent({
         },
     },
     mounted() {
-        console.log('PopOver mounted');
+        console.debug('PopOver mounted');
         this.setPopoverPosition();
 
         this.$engine.onResize(() => {

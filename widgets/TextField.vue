@@ -39,7 +39,7 @@ export default defineComponent({
         },
     },
     mounted() {
-        console.log('TextField mounted');
+        console.debug('TextField mounted');
     },
     methods: {
         updateTextValue(newValue: string) {

@@ -28,7 +28,7 @@ export default defineComponent({
         };
     },
     mounted() {
-        console.log('Switcher mounted');
+        console.debug('Switcher mounted');
         this.updateHandlePosition();
     },
     watch: {

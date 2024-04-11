@@ -32,7 +32,7 @@ export default defineComponent({
         },
     },
     mounted() {
-        console.log('MenuSwitcher mounted');
+        console.debug('MenuSwitcher mounted');
         this.items[0].isActive = true;
     },
     methods: {

@@ -34,7 +34,7 @@ export default defineComponent({
         };
     },
     mounted() {
-        console.log('ContextArea mounted');
+        console.debug('ContextArea mounted');
         document.addEventListener('click', this.handleClickOutside);
     },
     beforeUnmount() {

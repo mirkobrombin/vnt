@@ -25,7 +25,7 @@ export default defineComponent({
         },
     },
     mounted() {
-        console.log('VBox mounted');
+        console.debug('VBox mounted');
     },
 });
 </script>

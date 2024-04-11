@@ -1,5 +1,5 @@
 <template>
-    <div class="TitleBar">
+    <div class="TitleBar" :class="{ 'TitleBar--flat': !$slots.area }">
         <div class="TitleBar-area" data-tauri-drag-region>
             <slot name="area"></slot>
         </div>
@@ -54,6 +54,10 @@ export default defineComponent({
     background-color: var(--background-base);
     color: var(--text-primary-alt);
     user-select: none;
+}
+
+.TitleBar--flat {
+    height: 32px;
 }
 
 .TitleBar-area {

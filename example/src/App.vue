@@ -2,8 +2,6 @@
   <Window>
     <template #top>
       <TitleBar>
-        <template #area>
-        </template>
       </TitleBar>
     </template>
 

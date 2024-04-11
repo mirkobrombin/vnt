@@ -30,6 +30,10 @@ export default defineComponent({
             required: true,
             default: () => [],
         },
+        onChange: {
+            type: Function,
+            required: false,
+        },
     },
     mounted() {
         console.debug('MenuSwitcher mounted');
@@ -40,6 +44,10 @@ export default defineComponent({
             this.items.forEach((item) => {
                 item.isActive = item.pageId === pageId;
             });
+
+            if (this.onChange) {
+                this.onChange();
+            }
 
             this.$eventBus.emit(`${this.name}-changePage`, pageId);
         },

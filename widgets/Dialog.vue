@@ -7,8 +7,8 @@
                 <slot></slot>
             </div>
             <div class="Dialog-actions">
-                <Button v-if="cancel || !confirm" :label="cancelText" @click="cancel as () => void" />
-                <Button v-if="confirm" :label="confirmText" @click="confirm as () => void" :type="confirmType" />
+                <Button v-if="cancel || !confirm" :label="cancelText" @click="cancel()" />
+                <Button v-if="confirm" :label="confirmText" @click="confirm()" :type="confirmType" />
             </div>
         </div>
     </div>
@@ -20,6 +20,9 @@ import Button from "./Button.vue";
 
 export default defineComponent({
     name: "Dialog",
+    components: {
+        Button,
+    },
     props: {
         title: {
             type: String,
@@ -66,10 +69,7 @@ export default defineComponent({
 
             return classes;
         },
-    },
-    components: {
-        Button,
-    },
+    }
 });
 </script>
 

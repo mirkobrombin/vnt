@@ -21,7 +21,7 @@ interface MenuItem {
 export default defineComponent({
     name: "MenuSwitcher",
     props: {
-        name: {
+        context: {
             type: String,
             required: true,
         },
@@ -49,7 +49,7 @@ export default defineComponent({
                 this.onChange();
             }
 
-            this.$eventBus.emit(`${this.name}-changePage`, pageId);
+            this.$eventBus.emit(`${this.context}-changePage`, pageId);
         },
     },
 });

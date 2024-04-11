@@ -8,13 +8,13 @@
     <template #content>
       <SideLayout class="Toolkit" context="mainLayout">
         <template #sidebar>
-          <MenuSwitcher name="mainMenu" :items="mainSwitcheritems" :onChange="restorePanel" />
+          <MenuSwitcher context="mainMenu" :items="mainSwitcheritems" :onChange="restorePanel" />
         </template>
         <template #content>
-          <StaticNotebook name="mainMenu">
+          <StaticNotebook context="mainMenu">
             <Showcase title="TabsSwitcher & Notebook" description="A component to switch between tabs and pages">
-              <TabsSwitcher :allowNewTabs="true" name="mainTabs" />
-              <Notebook :newPageContent="newPage" name="mainTabs" />
+              <TabsSwitcher :allowNewTabs="true" context="mainTabs" />
+              <Notebook :newPageContent="newPage" context="mainTabs" />
             </Showcase>
 
             <Showcase title="Button" description="A component to trigger actions">
@@ -140,10 +140,10 @@
             <Showcase title="MenuSwitcher" description="A component to switch between pages">
               <SideLayout>
                 <template #sidebar>
-                  <MenuSwitcher name="exampleMenu" :items="menuSwitcherItems" />
+                  <MenuSwitcher context="exampleMenu" :items="menuSwitcherItems" />
                 </template>
                 <template #content>
-                  <StaticNotebook name="exampleMenu">
+                  <StaticNotebook context="exampleMenu">
                     <div>
                       <TextRich>
                         <div style="text-align: center">

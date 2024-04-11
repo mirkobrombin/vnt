@@ -36,7 +36,7 @@ interface Tab {
 export default defineComponent({
     name: "TabsSwitcher",
     props: {
-        name: {
+        context: {
             type: String,
             required: true,
         },
@@ -111,7 +111,7 @@ export default defineComponent({
                 this.activeTab = this.tabs[this.tabs.length - 1].id;
             }
 
-            this.$eventBus.emit(`${this.name}-closeTab`, tabId);
+            this.$eventBus.emit(`${this.context}-closeTab`, tabId);
         },
         createTab() {
             const newTabId = Math.max(...this.tabs.map(tab => tab.id), 0) + 1;
@@ -131,12 +131,12 @@ export default defineComponent({
                 }
             });
 
-            console.log("emit", `${this.name}-createTab`, newTab.id);
-            this.$eventBus.emit(`${this.name}-createTab`, newTab.id);
+            console.log("emit", `${this.context}-createTab`, newTab.id);
+            this.$eventBus.emit(`${this.context}-createTab`, newTab.id);
         },
         setActiveTab(tabId: number) {
             this.activeTab = tabId;
-            this.$eventBus.emit(`${this.name}-setActiveTab`, tabId);
+            this.$eventBus.emit(`${this.context}-setActiveTab`, tabId);
         },
     },
 });

@@ -13,7 +13,7 @@ import { defineComponent } from "vue";
 export default defineComponent({
     name: "StaticNotebook",
     props: {
-        name: {
+        context: {
             type: String,
             required: true,
         },
@@ -27,7 +27,7 @@ export default defineComponent({
     mounted() {
         console.log("StaticNotebook mounted");
 
-        this.$eventBus.on(`${this.name}-changePage`, this.changePage);
+        this.$eventBus.on(`${this.context}-changePage`, this.changePage);
 
         this.$nextTick(() => {
             const pages = this.$refs.pages as HTMLElement;
@@ -49,7 +49,7 @@ export default defineComponent({
 
             if (this._pages[pageId]) {
                 this._pages[pageId].style.display = "block";
-                this.$eventBus.emit(`${this.name}-pageChanged`, pageId);
+                this.$eventBus.emit(`${this.context}-pageChanged`, pageId);
             }
         },
     },

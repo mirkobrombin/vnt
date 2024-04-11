@@ -20,7 +20,7 @@ interface Page {
 export default defineComponent({
     name: "Notebook",
     props: {
-        name: {
+        context: {
             type: String,
             required: true,
         },
@@ -43,9 +43,9 @@ export default defineComponent({
     mounted() {
         console.log("Notebook mounted");
 
-        this.$eventBus.on(`${this.name}-createTab`, this.createPage as any);
-        this.$eventBus.on(`${this.name}-setActiveTab`, this.setActivePage as any);
-        this.$eventBus.on(`${this.name}-closeTab`, this.closePage as any);
+        this.$eventBus.on(`${this.context}-createTab`, this.createPage as any);
+        this.$eventBus.on(`${this.context}-setActiveTab`, this.setActivePage as any);
+        this.$eventBus.on(`${this.context}-closeTab`, this.closePage as any);
     },
     methods: {
         createPage(pageId: number) {
@@ -58,12 +58,12 @@ export default defineComponent({
 
             this.activePage = this.pages.length;
 
-            this.$eventBus.emit(`${this.name}-pageCreated`, this.activePage);
+            this.$eventBus.emit(`${this.context}-pageCreated`, this.activePage);
         },
         setActivePage(pageId: number) {
             this.activePage = pageId;
 
-            this.$eventBus.emit(`${this.name}-pageChanged`, this.activePage);
+            this.$eventBus.emit(`${this.context}-pageChanged`, this.activePage);
 
             console.log("setActivePage", pageId);
         },
@@ -79,7 +79,7 @@ export default defineComponent({
                 this.activePage = this.pages.length;
             }
 
-            this.$eventBus.emit(`${this.name}-pageClosed`, pageId);
+            this.$eventBus.emit(`${this.context}-pageClosed`, pageId);
 
             console.log("remaining pages", this.pages);
         },

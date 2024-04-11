@@ -22,16 +22,23 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
+interface ContextMenuItem {
+    id: number;
+    text: string;
+    shortcut: string;
+    icon: string;
+    action: () => void;
+    submenu: ContextMenuItem[];
+}
+
 export default defineComponent({
     name: "ContextArea",
-    data() {
-        return {
-            items: [
-                { id: 1, text: "Item 1", shortcut: "Ctrl+1", icon: "favorite_border", action: () => console.log("Item 1"), submenu: [] },
-                { id: 2, text: "Item 2", shortcut: "Ctrl+2", icon: "folder", action: () => console.log("Item 2"), submenu: [] },
-                { id: 3, text: "Item 3", shortcut: "Ctrl+3", icon: "star_rate", action: () => console.log("Item 3"), submenu: [] },
-            ],
-        };
+    props: {
+        items: {
+            type: Array as () => ContextMenuItem[],
+            required: true,
+            default: () => [],
+        },
     },
     mounted() {
         console.debug('ContextArea mounted');

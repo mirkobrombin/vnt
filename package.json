@@ -21,9 +21,7 @@
   ],
   "author": "Mirko Brombin",
   "license": "GPL-3.0-or-later",
-  "dependencies": {
-    "@xterm/addon-fit": "^0.10.0",
-    "@xterm/xterm": "^5.5.0",
+  "peerDependencies": {
     "mitt": "^3.0.1",
     "vue": "^3.3.4"
   },

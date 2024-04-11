@@ -5,7 +5,7 @@
             <span class="mdi" v-else>chevron_right</span>
         </button>
         <transition name="slide">
-            <div class="Paned-left" ref="left" :style="{ width: `${_size.left}%` }"
+            <div class="Paned-left" ref="left" :style="{ width: `${_size.left}%`, minWidth: `${minLeft}px` }"
                 v-show="!minLeftReached || overlayVisible"
                 :class="{ 'Paned-left--overlay-visible': overlayVisible, 'Paned-left--overlay-hidden': minLeftReached && !overlayVisible }">
                 <slot name="left"></slot>
@@ -119,7 +119,7 @@ export default defineComponent({
     left: 0;
     bottom: 0;
     right: 0;
-    min-width: 100%;
+    min-width: 100% !important;
     z-index: 1000;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;

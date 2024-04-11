@@ -1,6 +1,6 @@
 <template>
     <div class="SideLayout">
-        <Paned :size="_size" :minLeft="280" :leftTrigger="500">
+        <Paned :size="_size" :minLeft="265" :leftTrigger="600">
             <template #left>
                 <div class="SideLayout-sidebar">
                     <slot name="sidebar"></slot>

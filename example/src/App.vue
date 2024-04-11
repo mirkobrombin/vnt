@@ -55,19 +55,19 @@
             <Showcase title="Carousel" description="A component to show a series of items">
               <Carousel>
                 <TextRich>
-                  <center>
+                  <div style="text-align: center">
                     <h1>Slide 1</h1>
-                  </center>
+                  </div>
                 </TextRich>
                 <TextRich>
-                  <center>
+                  <div style="text-align: center">
                     <h1>Slide 2</h1>
-                  </center>
+                  </div>
                 </TextRich>
                 <TextRich>
-                  <center>
+                  <div style="text-align: center">
                     <h1>Slide 3</h1>
-                  </center>
+                  </div>
                 </TextRich>
               </Carousel>
             </Showcase>
@@ -148,26 +148,26 @@
                   <StaticNotebook name="exampleMenu">
                     <div>
                       <TextRich>
-                        <center>
+                        <div style="text-align: center">
                           <h1>Hello, World!</h1>
                           <p>This is the page 1 of the MenuSwitcher component.</p>
-                        </center>
+                        </div>
                       </TextRich>
                     </div>
                     <div>
                       <TextRich>
-                        <center>
+                        <div style="text-align: center">
                           <h1>Ciao, Mondo!</h1>
                           <p>This is the page 2 of the MenuSwitcher component.</p>
-                        </center>
+                        </div>
                       </TextRich>
                     </div>
                     <div>
                       <TextRich>
-                        <center>
+                        <div style="text-align: center">
                           <h1>Bonjour, le Monde!</h1>
                           <p>This is the page 3 of the MenuSwitcher component.</p>
-                        </center>
+                        </div>
                       </TextRich>
                     </div>
                   </StaticNotebook>
@@ -320,7 +320,7 @@
             </Showcase>
 
             <Showcase title="ContextArea" description="A component to display a context menu">
-              <ContextArea>
+              <ContextArea :items="contextMenuItems">
                 <template #area>
                   <TextRich>
                     <p>Rigth click here to show the context menu</p>
@@ -363,6 +363,11 @@ export default defineComponent({
         { label: "Item 1", action: () => console.log("Item 1") },
         { label: "Item 2", action: () => console.log("Item 2") },
         { label: "Item 3", action: () => console.log("Item 3") }
+      ],
+      contextMenuItems: [
+        { id: 1, text: "Item 1", shortcut: "Ctrl+1", icon: "check", action: () => console.log("Item 1"), submenu: [] },
+        { id: 2, text: "Item 2", shortcut: "Ctrl+2", icon: "close", action: () => console.log("Item 2"), submenu: [] },
+        { id: 3, text: "Item 3", shortcut: "Ctrl+3", icon: "menu", action: () => console.log("Item 3"), submenu: [] }
       ],
       mainSwitcheritems: [
         { label: "TabsSwitcher & Notebook", pageId: 0 },

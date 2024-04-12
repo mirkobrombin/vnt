@@ -1,14 +1,12 @@
 <template>
     <div class="Showcase">
-        <Card :fill="true">
-            <VBox :spacing="15" :stretch="true">
-                <h2 class="Showcase-title">{{ title }}</h2>
-                <p class="Showcase-description">{{ description }}</p>
-                <div class="Showcase-content">
-                    <slot></slot>
-                </div>
-            </VBox>
-        </Card>
+        <VBox :spacing="15" :margin="15" align="start">
+            <h2 class="Showcase-title">{{ title }}</h2>
+            <p class="Showcase-description">{{ description }}</p>
+            <div class="Showcase-content">
+                <slot></slot>
+            </div>
+        </VBox>
     </div>
 </template>
 
@@ -58,6 +56,5 @@ export default defineComponent({
     height: 100%;
     background-color: var(--background-base);
     border-radius: 8px;
-    padding: 16px;
 }
 </style>

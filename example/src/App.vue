@@ -52,21 +52,21 @@
 
             <Showcase title="Carousel" description="A component to show a series of items">
               <Carousel>
-                <TextRich>
-                  <div style="text-align: center">
+                <VBox align="center">
+                  <TextRich>
                     <h1>Slide 1</h1>
-                  </div>
-                </TextRich>
-                <TextRich>
-                  <div style="text-align: center">
+                  </TextRich>
+                </VBox>
+                <VBox align="center">
+                  <TextRich>
                     <h1>Slide 2</h1>
-                  </div>
-                </TextRich>
-                <TextRich>
-                  <div style="text-align: center">
+                  </TextRich>
+                </VBox>
+                <VBox align="center">
+                  <TextRich>
                     <h1>Slide 3</h1>
-                  </div>
-                </TextRich>
+                  </TextRich>
+                </VBox>
               </Carousel>
             </Showcase>
 
@@ -179,17 +179,17 @@
             </Showcase>
 
             <Showcase title="TextField" description="A component to input text">
-              <VBox :spacing="40" :margin="8" :stretch="true">
-                <VBox :spacing="20" :stretch="true">
+              <VBox :spacing="40" :margin="8" align="fill">
+                <VBox :spacing="20" align="fill">
                   <TextField label="Name" placeholder="Type your name" v-model="textValue" />
                   <p>Text value: <u>{{ textValue }}</u></p>
                 </VBox>
 
-                <VBox :spacing="20" :stretch="true">
+                <VBox :spacing="20" align="fill">
                   <TextField label="Name" placeholder="Example with icon" v-model="textValue" icon="person" />
                 </VBox>
 
-                <VBox :spacing="20" :stretch="true">
+                <VBox :spacing="20" align="fill">
                   <TextField label="Name" placeholder="Example with icon (left)" v-model="textValue" icon="person"
                     iconPosition="left" />
                 </VBox>
@@ -197,17 +197,17 @@
             </Showcase>
 
             <Showcase title="SelectField" description="A component to select an option">
-              <VBox :spacing="40" :margin="8" :stretch="true">
-                <VBox :spacing="20" :stretch="true">
+              <VBox :spacing="40" :margin="8" align="fill">
+                <VBox :spacing="20" align="fill">
                   <SelectField label="Type your name" v-model="selectValue" :options="selectOptions" />
                   <p>Selected value: <u>{{ selectValue }}</u></p>
                 </VBox>
 
-                <VBox :spacing="20" :stretch="true">
+                <VBox :spacing="20" align="fill">
                   <SelectField label="Example with icon" v-model="selectValue" :options="selectOptions" icon="person" />
                 </VBox>
 
-                <VBox :spacing="20" :stretch="true">
+                <VBox :spacing="20" align="fill">
                   <SelectField label="Example with icon (left)" v-model="selectValue" :options="selectOptions"
                     icon="person" iconPosition="left" />
                 </VBox>
@@ -328,7 +328,7 @@
             </Showcase>
 
             <Showcase title="Dark Mode" description="Switch between light and dark mode">
-              <VBox :spacing="10" :stretch="true">
+              <VBox :spacing="10" align="fill">
                 <Switcher :model="themeSwitcherValue" @update:model="themeSwitcherValue = $event" />
                 <p>Theme: <u>{{ themeSwitcherValue ? "Dark" : "Light" }}</u></p>
               </VBox>
@@ -416,7 +416,6 @@ export default defineComponent({
     },
     togglePopOver() {
       this.popOverShowing = !this.popOverShowing;
-      console.log("togglePopOver", this.popOverShowing);
     },
     restorePanel() {
       this.$eventBus.emit("mainLayout-close");

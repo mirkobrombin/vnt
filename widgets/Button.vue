@@ -26,6 +26,7 @@ export default defineComponent({
         type: {
             type: String,
             default: "button",
+            validator: (value: string) => ["button", "suggested", "destructive", "flat"].includes(value),
         },
     },
     mounted() {
@@ -50,6 +51,9 @@ export default defineComponent({
             }
             if (this.type === "destructive") {
                 classes.push("Button--destructive");
+            }
+            if (this.type === "flat") {
+                classes.push("Button--flat");
             }
 
             return classes;
@@ -114,6 +118,20 @@ export default defineComponent({
 
 .Button.Button--destructive:active {
     background-color: var(--action-destructive-active);
+}
+
+.Button.Button--flat {
+    background-color: transparent;
+    color: var(--text-primary);
+    padding: 10px;
+}
+
+.Button.Button--flat:hover {
+    background-color: var(--background-elevated);
+}
+
+.Button.Button--flat:active {
+    background-color: var(--background-base);
 }
 
 .Button-icon {

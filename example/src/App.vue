@@ -8,7 +8,7 @@
     <template #content>
       <SideLayout class="Toolkit" context="mainLayout">
         <template #sidebar>
-          <MenuSwitcher context="mainMenu" :items="mainSwitcheritems" :onChange="restorePanel" />
+          <MenuSwitcher context="mainMenu" :items="mainSwitcheritems" @changePage="restorePanel" />
         </template>
         <template #content>
           <StaticNotebook context="mainMenu">

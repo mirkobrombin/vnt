@@ -30,18 +30,15 @@ export default defineComponent({
             required: true,
             default: () => [],
         },
-        onChange: {
-            type: Function,
-            required: false,
-        },
     },
+    emits: ['changePage'],
     mounted() {
         console.debug('MenuSwitcher mounted');
         this.items[0].isActive = true;
     },
     methods: {
         changePage(pageId: number) {
-            this.items.forEach((item) => {
+            this.items.forEach((item: MenuItem) => {
                 item.isActive = item.pageId === pageId;
             });
 
@@ -50,6 +47,7 @@ export default defineComponent({
             }
 
             this.$eventBus.emit(`${this.context}-changePage`, pageId);
+            this.$emit('changePage', pageId);
         },
     },
 });

@@ -1,14 +1,15 @@
 <template>
     <div class="BaseField" @click="focusInput"
-        :class="{ 'BaseField--active': isActive || hasContent, 'BaseField--icon-left': iconPosition === 'left' }">
+        :class="{ 'BaseField--active': isActive || hasContent, 'BaseField--icon-left': iconPosition === 'left', 'BaseField--flat': flat }">
         <label class="BaseField-label" :class="{ 'BaseField-label--active': isActive || hasContent }">
             {{ label }}
         </label>
         <input :type="inputType" :placeholder="isActive ? placeholder : ''" :value="inputValue" @input="handleInput"
-            @focus="isActive = true" @blur="handleBlur" class="BaseField-input" ref="inputField" />
+            @focus="isActive = true" @blur="handleBlur" class="BaseField-input" :readonly="readOnly" ref="inputField" />
         <span v-if="icon" class="BaseField-icon mdi"
-            :class="{ 'BaseField-icon--left': iconPosition === 'left', 'BaseField-icon--right': iconPosition === 'right' }">{{
-            icon }}</span>
+            :class="{ 'BaseField-icon--left': iconPosition === 'left', 'BaseField-icon--right': iconPosition === 'right' }">
+            {{ icon }}
+        </span>
     </div>
 </template>
 
@@ -44,6 +45,14 @@ export default defineComponent({
             default: 'right',
             validator: (value: string) => ['left', 'right'].includes(value),
         },
+        readOnly: {
+            type: Boolean,
+            default: false,
+        },
+        flat: {
+            type: Boolean,
+            default: false,
+        },
     },
     emits: ['update:modelValue'],
     data() {
@@ -51,6 +60,11 @@ export default defineComponent({
             inputValue: this.modelValue,
             isActive: false,
         };
+    },
+    watch: {
+        modelValue(newVal) {
+            this.inputValue = newVal;
+        }
     },
     mounted() {
         console.debug('BaseField mounted');
@@ -70,9 +84,7 @@ export default defineComponent({
             this.$emit('update:modelValue', newValue);
         },
         handleBlur() {
-            if (!this.inputValue) {
-                this.isActive = false;
-            }
+            this.isActive = this.hasContent;
         },
         inputType(): string {
             return this.type;
@@ -90,7 +102,7 @@ export default defineComponent({
     width: 100%;
     border: none;
     border-bottom: 1px solid var(--border-tertiary);
-    font-size: 1rem;
+    font-size: 100%;
     padding: 8px 0;
     background: transparent;
     color: var(--text-primary);
@@ -100,6 +112,10 @@ export default defineComponent({
 
 .BaseField-input:focus {
     border-bottom: 2px solid var(--action-suggested);
+}
+
+.BaseField.BaseField--flat .BaseField-input {
+    border-bottom: none;
 }
 
 .BaseField-label {

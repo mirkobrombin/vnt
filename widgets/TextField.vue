@@ -1,6 +1,6 @@
 <template>
     <BaseField :model-value="modelValue" :label="label" :placeholder="placeholder" :type="type" :icon="icon"
-        :icon-position="iconPosition" @update:modelValue="updateTextValue" />
+        :icon-position="iconPosition" @update:modelValue="updateTextValue" :readOnly="readOnly" :flat="flat" />
 </template>
 
 <script lang="ts">
@@ -37,6 +37,14 @@ export default defineComponent({
             type: String,
             default: 'right',
         },
+        readOnly: {
+            type: Boolean,
+            default: false,
+        },
+        flat: {
+            type: Boolean,
+            default: false,
+        }
     },
     mounted() {
         console.debug('TextField mounted');

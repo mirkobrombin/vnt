@@ -3,7 +3,7 @@
         <div class="Notebook-items">
             <div class="Notebook-items-item" v-for="page in orderedPages" :key="page.id"
                 :class="{ active: activePage === page.id }">
-                <component :is="page.content"></component>
+                <component :is="page.content" v-if="page.props" v-bind="page.props" />
             </div>
         </div>
     </div>
@@ -15,6 +15,7 @@ import { defineComponent } from "vue";
 interface Page {
     id: number;
     content: any;
+    props?: {};
 }
 
 export default defineComponent({
@@ -49,12 +50,22 @@ export default defineComponent({
     },
     methods: {
         createPage(pageId: number) {
-            console.log("createPage", pageId);
-            const newPage = defineComponent(this.newPageContent?.());
-            this.pages.push({
-                id: pageId,
-                content: newPage,
-            });
+            const newPage = defineComponent(this.newPageContent?.()) as any;
+
+            if (newPage.props === undefined) {
+                this.pages.push({
+                    id: pageId,
+                    content: newPage.component,
+                });
+            } else {
+                let _props = newPage.props
+                _props.tabId = pageId;
+                this.pages.push({
+                    id: pageId,
+                    content: newPage.component,
+                    props: _props,
+                });
+            }
 
             this.activePage = this.pages.length;
 

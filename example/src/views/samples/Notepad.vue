@@ -3,6 +3,7 @@
         <template #top>
             <TitleBar>
                 <template #area>
+                    <Button @click="goBack" icon="chevron_left" type="flat" />
                     <TabsSwitcher :allowNewTabs="true" context="mainTabs" />
                 </template>
             </TitleBar>
@@ -30,6 +31,9 @@ export default defineComponent({
                     context: 'mainTabs',
                 },
             };
+        },
+        goBack() {
+            this.$router.back();
         },
     },
 });

@@ -1,7 +1,11 @@
 <template>
     <Window>
         <template #top>
-            <TitleBar></TitleBar>
+            <TitleBar>
+                <template #area>
+                    <Button @click="goBack" icon="chevron_left" type="flat" />
+                </template>
+            </TitleBar>
         </template>
         <template #content>
             <VBox align="fill" class="Calculator">
@@ -88,6 +92,9 @@ export default defineComponent({
             } else if (event.key === 'Escape') {
                 this.currentInput = '';
             }
+        },
+        goBack() {
+            this.$router.back();
         },
     },
 });

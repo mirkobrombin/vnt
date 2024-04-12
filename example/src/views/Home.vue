@@ -349,6 +349,7 @@
                         <Showcase title="Samples" description="A collection of samples">
                             <VBox :spacing="20" align="start">
                                 <Button label="Calculator" @click="$router.push('/calculator')" />
+                                <Button label="Task Manager" @click="$router.push('/task-manager')" />
                             </VBox>
                         </Showcase>
 

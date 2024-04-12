@@ -10,7 +10,12 @@ const routes = [
         path: "/calculator",
         name: "calculator",
         component: () => import("./views/samples/Calculator.vue"),
-    }
+    },
+    {
+        path: "/task-manager",
+        name: "task-manager",
+        component: () => import("./views/samples/TaskManager.vue"),
+    },
 ]
 
 export const router = createRouter({

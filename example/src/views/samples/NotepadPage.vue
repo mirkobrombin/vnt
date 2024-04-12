@@ -38,10 +38,16 @@ export default defineComponent({
     },
     watch: {
         text(newValue: string, oldValue: string) {
-            if (newValue.slice(0, 10) !== oldValue.slice(0, 10)) {
+            const cleanValue = newValue.replace(/<\/?[^>]+(>|$)/g, "");
+            let escapedTitle = cleanValue.slice(0, 10);
+            escapedTitle = escapedTitle.replace(/[^a-zA-Z0-9\s]+$/, "");
+
+            const oldCleanValue = oldValue.replace(/<\/?[^>]+(>|$)/g, "").slice(0, 10);
+            if (escapedTitle !== oldCleanValue) {
+                // @ts-ignore
                 this.$eventBus.emit(`${this.context}-renameTab`, {
                     tabId: this.tabId,
-                    title: newValue.slice(0, 10),
+                    title: escapedTitle,
                 });
             }
         },

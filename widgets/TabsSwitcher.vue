@@ -143,9 +143,8 @@ export default defineComponent({
         renameTab(data: { tabId: number; title: string; }) {
             const tab = this.tabs.find((tab: { id: number; }) => tab.id === data.tabId);
             if (tab) {
-                const escapedTitle = data.title.replace(/<\/?[^>]+(>|$)/g, "");
-                if (escapedTitle.length > 0) {
-                    tab.title = escapedTitle;
+                if (data.title.length > 0) {
+                    tab.title = data.title;
                 }
             }
         },

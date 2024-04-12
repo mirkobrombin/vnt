@@ -149,6 +149,7 @@ export default defineComponent({
 }
 
 .SelectField-dropdown {
+    display: flex;
     position: absolute;
     top: 100%;
     width: calc(100% - 20px);
@@ -160,12 +161,15 @@ export default defineComponent({
     max-height: 200px;
     overflow-y: auto;
     padding: 10px;
+    flex-direction: column;
+    align-items: stretch;
 }
 
 .SelectField-option {
     padding: 10px 16px;
     background-color: transparent;
     border-radius: 8px;
+    text-align: left;
 }
 
 .SelectField-option:hover {
@@ -174,6 +178,10 @@ export default defineComponent({
 
 .SelectField-option:active {
     background-color: var(--background-top);
+}
+
+.SelectField-icon {
+    text-align: left;
 }
 
 .SelectField-icon,

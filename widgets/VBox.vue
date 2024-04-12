@@ -28,8 +28,8 @@ export default defineComponent({
     computed: {
         _align(): string {
             switch (this.align) {
-                case 'stretch':
-                    return 'fill';
+                case 'fill':
+                    return 'stretch';
                 case 'start':
                 case 'end':
                     return 'flex-' + this.align;

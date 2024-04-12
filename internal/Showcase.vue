@@ -52,8 +52,10 @@ export default defineComponent({
 .Showcase-content {
     display: flex;
     flex-direction: column;
+    align-items: stretch;
     flex-grow: 1;
     height: 100%;
+    width: 100%;
     background-color: var(--background-base);
     border-radius: 8px;
 }

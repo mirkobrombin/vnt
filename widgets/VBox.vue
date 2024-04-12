@@ -1,12 +1,12 @@
 <template>
-    <div class="VBox"
-        :style="{ margin: margin + 'px', gap: spacing + 'px', alignItems: stretch ? 'stretch' : 'center' }">
+    <div class="VBox" :style="{ margin: margin + 'px', gap: spacing + 'px', alignItems: _align }">
         <slot></slot>
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+
 
 export default defineComponent({
     name: "VBox",
@@ -19,9 +19,25 @@ export default defineComponent({
             type: Number,
             default: 0,
         },
-        stretch: {
-            type: Boolean,
-            default: false,
+        align: {
+            type: String,
+            default: 'center',
+            validator: (value: string) => ['center', 'start', 'end', 'fill'].includes(value),
+        },
+    },
+    computed: {
+        _align(): string {
+            switch (this.align) {
+                case 'stretch':
+                    return 'fill';
+                case 'start':
+                case 'end':
+                    return 'flex-' + this.align;
+                case 'center':
+                    return 'center';
+                default:
+                    return 'center';
+            }
         },
     },
     mounted() {

@@ -56,6 +56,8 @@ export default defineComponent({
     },
     mounted() {
         console.log("TabsSwitcher mounted");
+
+        this.$eventBus.on(`${this.context}-renameTab`, this.renameTab);
     },
     computed: {
         orderedTabs() {
@@ -93,7 +95,7 @@ export default defineComponent({
         },
         closeTab(tabId: number) {
             const wasLastTab = this.tabs[this.tabs.length - 1].id === tabId;
-            this.tabs = this.tabs.filter((tab) => tab.id !== tabId);
+            this.tabs = this.tabs.filter((tab: { id: number; }) => tab.id !== tabId);
 
             if (this.activeTab === tabId) {
                 this.activeTab = this.tabs.length > 0 ? this.tabs[0].id : -1;
@@ -114,11 +116,11 @@ export default defineComponent({
             this.$eventBus.emit(`${this.context}-closeTab`, tabId);
         },
         createTab() {
-            const newTabId = Math.max(...this.tabs.map(tab => tab.id), 0) + 1;
+            const newTabId = Math.max(...this.tabs.map((tab: { id: any; }) => tab.id), 0) + 1;
             const newTab = {
                 id: newTabId,
                 order: this.tabs.length + 1,
-                title: `Tab ${newTabId}`,
+                title: "New tab",
             };
             this.tabs.push(newTab);
             this.activeTab = newTab.id;
@@ -137,6 +139,12 @@ export default defineComponent({
         setActiveTab(tabId: number) {
             this.activeTab = tabId;
             this.$eventBus.emit(`${this.context}-setActiveTab`, tabId);
+        },
+        renameTab(data: { tabId: number; title: string; }) {
+            const tab = this.tabs.find((tab: { id: number; }) => tab.id === data.tabId);
+            if (tab) {
+                tab.title = data.title;
+            }
         },
     },
 });

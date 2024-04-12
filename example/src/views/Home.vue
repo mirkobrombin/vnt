@@ -431,7 +431,10 @@ export default defineComponent({
     methods: {
         newPage() {
             console.log("New page");
-            return shallowRef({ component: Dummy });
+            return {
+                component: shallowRef(Dummy),
+                props: {},
+            };
         },
         showModal() {
             this.modalShowing = !this.modalShowing;

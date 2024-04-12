@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import vnt from 'vnt/plugin/vnt'
+import { router } from './router'
 // import BrowserEngine from 'vnt/lib/engines/Browser'
 import TauriEngine from 'vnt/lib/engines/Tauri'
 import { Window } from '@tauri-apps/api/window'
@@ -73,4 +74,5 @@ app.use(vnt, new TauriEngine(Window.getCurrent()))
 // Using Browser Engine
 // app.use(vnt, new BrowserEngine())
 
+app.use(router)
 app.mount('#app')

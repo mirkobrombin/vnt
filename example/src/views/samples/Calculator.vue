@@ -58,7 +58,7 @@ export default defineComponent({
     data() {
         return {
             currentInput: "",
-            history: [],
+            history: [] as string[],
             allowedKeys: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '(', ')', '+', '-', '*', '/', '%'],
         };
     },
@@ -78,7 +78,7 @@ export default defineComponent({
                 this.currentInput = "Error";
             }
         },
-        handleKeyPress(event) {
+        handleKeyPress(event: KeyboardEvent) {
             if (this.allowedKeys.includes(event.key)) {
                 this.currentInput += event.key;
             } else if (event.key === 'Enter' || event.key === '=') {

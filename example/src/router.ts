@@ -16,6 +16,11 @@ const routes = [
         name: "task-manager",
         component: () => import("./views/samples/TaskManager.vue"),
     },
+    {
+        path: "/notepad",
+        name: "notepad",
+        component: () => import("./views/samples/Notepad.vue"),
+    },
 ]
 
 export const router = createRouter({

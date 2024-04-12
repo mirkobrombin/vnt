@@ -350,6 +350,7 @@
                             <VBox :spacing="20" align="start">
                                 <Button label="Calculator" @click="$router.push('/calculator')" />
                                 <Button label="Task Manager" @click="$router.push('/task-manager')" />
+                                <Button label="Notepad" @click="$router.push('/notepad')" />
                             </VBox>
                         </Showcase>
 
@@ -430,7 +431,7 @@ export default defineComponent({
     methods: {
         newPage() {
             console.log("New page");
-            return shallowRef(Dummy);
+            return shallowRef({ component: Dummy });
         },
         showModal() {
             this.modalShowing = !this.modalShowing;

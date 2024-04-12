@@ -20,7 +20,6 @@ export default defineComponent({
     background-color: var(--background-elevated);
     border-radius: 8px;
     padding: 16px;
-    margin: 8px;
     box-shadow: var(--shadow-elevated-2);
     border: 1px solid var(--border-primary);
     text-align: left;

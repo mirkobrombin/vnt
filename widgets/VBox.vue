@@ -52,5 +52,6 @@ export default defineComponent({
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
+    text-align: left;
 }
 </style>

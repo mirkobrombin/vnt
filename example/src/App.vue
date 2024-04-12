@@ -33,17 +33,21 @@
             </Showcase>
 
             <Showcase title="Dialog" description="A component to display messages and confirmations">
-              <Button label="Show Dialog" @click="showModal" />
-              <Dialog v-if="modalShowing" title="Hello, World!"
-                :messages="['This is a simple dialog to showcase the Dialog component.', 'You can use it to display messages, confirmations, and more.']"
-                :confirm="showModal" confirmText="Confirm Action" :cancel="showModal" cancelText="Cancel" />
+              <VBox :spacing="20" align="start">
+                <Button label="Show Dialog" @click="showModal" />
+                <Dialog v-if="modalShowing" title="Hello, World!"
+                  :messages="['This is a simple dialog to showcase the Dialog component.', 'You can use it to display messages, confirmations, and more.']"
+                  :confirm="showModal" confirmText="Confirm Action" :cancel="showModal" cancelText="Cancel" />
+              </VBox>
             </Showcase>
 
             <Showcase title="PopOver" description="A component to display a menu">
-              <Button @click="togglePopOver" icon="menu" ref="popOverButton" />
-              <PopOver v-if="popOverShowing" :attachTo="$refs.popOverButton" @close="togglePopOver">
-                <Menu :items="menuItems" />
-              </PopOver>
+              <VBox :spacing="20" align="start">
+                <Button @click="togglePopOver" icon="menu" ref="popOverButton" />
+                <PopOver v-if="popOverShowing" :attachTo="$refs.popOverButton" @close="togglePopOver">
+                  <Menu :items="menuItems" />
+                </PopOver>
+              </VBox>
             </Showcase>
 
             <Showcase title="Menu" description="A component to display a list of items">

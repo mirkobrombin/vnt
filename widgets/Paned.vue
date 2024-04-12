@@ -175,7 +175,7 @@ export default defineComponent({
 
 .Paned-divider {
     cursor: ew-resize;
-    background-color: var(--background-elevated);
+    background-color: var(--background-elevated-2);
     border: 2px solid transparent;
     transition: all 0.2s;
 }

@@ -1,6 +1,15 @@
 <template>
     <div class="NotepadPage">
-        <textarea class="NotepadPage-textarea" v-model="text" />
+        <Paned>
+            <template #left>
+                <textarea class="NotepadPage-textarea" v-model="text" />
+            </template>
+            <template #right>
+                <TextRich class="NotepadPage-preview">
+                    <div v-html="text" />
+                </TextRich>
+            </template>
+        </Paned>
     </div>
 </template>
 
@@ -55,6 +64,13 @@ export default defineComponent({
     resize: none;
     font-size: 16px;
     color: var(--text-primary);
+    background-color: transparent;
     outline: none;
+}
+
+.NotepadPage-preview {
+    background-color: var(--background-base);
+    height: 100%;
+    text-align: left;
 }
 </style>

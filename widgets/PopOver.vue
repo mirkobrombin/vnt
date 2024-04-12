@@ -54,6 +54,10 @@ export default defineComponent({
                     left += parent.scrollLeft;
                 });
 
+                if (top <= attachTo.getBoundingClientRect().height) {
+                    top = attachTo.getBoundingClientRect().height + 10;
+                }
+
                 popover.style.top = `${top}px`;
                 popover.style.left = `${left}px`;
             });

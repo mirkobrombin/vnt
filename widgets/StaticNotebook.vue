@@ -27,7 +27,7 @@ export default defineComponent({
     mounted() {
         console.log("StaticNotebook mounted");
 
-        this.$eventBus.on(`${this.context}-changePage`, this.changePage);
+        this.$eventBus.on(`${this.context}-changePage`, (event: unknown) => this.changePage(event as number));
 
         this.$nextTick(() => {
             const pages = this.$refs.pages as HTMLElement;

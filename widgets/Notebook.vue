@@ -44,9 +44,9 @@ export default defineComponent({
     mounted() {
         console.log("Notebook mounted");
 
-        this.$eventBus.on(`${this.context}-createTab`, this.createPage as any);
-        this.$eventBus.on(`${this.context}-setActiveTab`, this.setActivePage as any);
-        this.$eventBus.on(`${this.context}-closeTab`, this.closePage as any);
+        this.$eventBus.on(`${this.context}-createTab`, (event: unknown) => this.createPage(event as number));
+        this.$eventBus.on(`${this.context}-setActiveTab`, (event: unknown) => this.setActivePage(event as number));
+        this.$eventBus.on(`${this.context}-closeTab`, (event: unknown) => this.closePage(event as number));
     },
     methods: {
         createPage(pageId: number) {

@@ -20,10 +20,9 @@
 
                         <Showcase title="Button" description="A component to trigger actions">
                             <HBox :spacing="15">
-                                <Button label="Normal Action" @click="console.log('ciao')" />
-                                <Button label="Suggested Action" @click="console.log('ciao')" icon="check"
-                                    type="suggested" />
-                                <Button label="Destructive Action" @click="console.log('ciao')" icon="close"
+                                <Button label="Normal" @click="console.log('ciao')" />
+                                <Button label="Suggested" @click="console.log('ciao')" icon="check" type="suggested" />
+                                <Button label="Destructive" @click="console.log('ciao')" icon="close"
                                     type="destructive" />
                             </HBox>
                         </Showcase>

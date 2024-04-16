@@ -26,6 +26,7 @@
     "vue": "^3.3.4"
   },
   "devDependencies": {
+    "@vue/runtime-core": "^3.4.21",
     "sass": "^1.74.1",
     "sass-loader": "^14.1.1",
     "typescript": "^5.0.2"

@@ -57,7 +57,9 @@ export default defineComponent({
     mounted() {
         console.log("TabsSwitcher mounted");
 
-        this.$eventBus.on(`${this.context}-renameTab`, this.renameTab);
+        this.$eventBus.on(`${this.context}-renameTab`, (data: unknown) => {
+            this.renameTab(data as { tabId: number; title: string });
+        });
     },
     computed: {
         orderedTabs() {

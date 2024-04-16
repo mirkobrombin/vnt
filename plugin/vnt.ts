@@ -1,7 +1,8 @@
 import { App } from 'vue';
 
 // lib
-import EventBus from '../lib/EventBus';
+import mitt from 'mitt';
+import { Emitter, EventType } from 'mitt';
 import Engine from '../lib/Engine';
 
 // styles
@@ -33,10 +34,10 @@ import TitleBar from '../widgets/TitleBar.vue';
 import VBox from '../widgets/VBox.vue';
 import Window from '../widgets/Window.vue';
 
-const vnt = {
+export default {
     install(app: App, engine: Engine) {
         // lib
-        app.config.globalProperties.$eventBus = EventBus;
+        app.config.globalProperties.$eventBus = mitt();
         app.config.globalProperties.$engine = engine;
 
         // components
@@ -112,4 +113,9 @@ function generateThemeCSS(theme: { [x: string]: any; }) {
     return css;
 }
 
-export default vnt;
+declare module '@vue/runtime-core' {
+    interface ComponentCustomProperties {
+        $eventBus: Emitter<Record<EventType, unknown>>;
+        $engine: Engine;
+    }
+}

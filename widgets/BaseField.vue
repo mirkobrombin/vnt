@@ -1,11 +1,12 @@
 <template>
     <div class="BaseField" @click="focusInput"
-        :class="{ 'BaseField--active': isActive || hasContent, 'BaseField--icon-left': iconPosition === 'left', 'BaseField--flat': flat }">
-        <label class="BaseField-label" :class="{ 'BaseField-label--active': isActive || hasContent }">
+        :class="{ 'BaseField--active': isActive || hasContent, 'BaseField--icon-left': iconPosition === 'left', 'BaseField--flat': flat, 'BaseField--contained': contained }">
+        <label class="BaseField-label" :class="{ 'BaseField-label--active': isActive || hasContent }" v-if="label">
             {{ label }}
         </label>
-        <input :type="inputType" :placeholder="isActive ? placeholder : ''" :value="inputValue" @input="handleInput"
-            @focus="isActive = true" @blur="handleBlur" class="BaseField-input" :readonly="readOnly" ref="inputField" />
+        <input :type="inputType" :placeholder="label ? (isActive ? placeholder : '') : placeholder" :value="inputValue"
+            @input="handleInput" @focus="isActive = true" @blur="handleBlur" class="BaseField-input"
+            :readonly="readOnly" ref="inputField" />
         <span v-if="icon" class="BaseField-icon mdi"
             :class="{ 'BaseField-icon--left': iconPosition === 'left', 'BaseField-icon--right': iconPosition === 'right' }">
             {{ icon }}
@@ -50,6 +51,10 @@ export default defineComponent({
             default: false,
         },
         flat: {
+            type: Boolean,
+            default: false,
+        },
+        contained: {
             type: Boolean,
             default: false,
         },
@@ -115,6 +120,16 @@ export default defineComponent({
 }
 
 .BaseField.BaseField--flat .BaseField-input {
+    border-bottom: none;
+}
+
+.BaseField.BaseField--contained {
+    background: var(--background-elevated);
+    border-radius: 8px;
+    padding: 2px 10px;
+}
+
+.BaseField.BaseField--contained .BaseField-input {
     border-bottom: none;
 }
 

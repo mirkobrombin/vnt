@@ -28,6 +28,10 @@ export default defineComponent({
             default: "button",
             validator: (value: string) => ["button", "suggested", "destructive", "flat"].includes(value),
         },
+        square: {
+            type: Boolean,
+            default: false,
+        },
     },
     mounted() {
         console.debug('Button mounted');
@@ -56,6 +60,10 @@ export default defineComponent({
                 classes.push("Button--flat");
             }
 
+            if (this.square) {
+                classes.push("Button--square");
+            }
+
             return classes;
         },
     },
@@ -75,6 +83,10 @@ export default defineComponent({
     font-size: 15px;
     gap: 5px;
     padding: 10px 15px;
+}
+
+.Button.Button--square {
+    border-radius: 8px;
 }
 
 .Button.Button--withIcon {

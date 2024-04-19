@@ -65,6 +65,7 @@ export default defineComponent({
     align-items: center;
     flex-grow: 1;
     --wails-draggable: drag;
+    -webkit-app-region: drag;
 }
 
 .TitleBar-controls {

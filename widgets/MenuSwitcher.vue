@@ -42,9 +42,9 @@ export default defineComponent({
                 item.isActive = item.pageId === pageId;
             });
 
-            if (this.onChange) {
+            /*if (this.onChange) {
                 this.onChange();
-            }
+            }*/
 
             this.$eventBus.emit(`${this.context}-changePage`, pageId);
             this.$emit('changePage', pageId);

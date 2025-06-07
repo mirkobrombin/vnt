@@ -1,11 +1,10 @@
 {
   "name": "vnt",
   "version": "1.0.1",
-  "main": "plugins/vnt.ts",
-  "types": "vnt-types.d.ts",
+  "main": "src/index.ts",
   "description": "Vue Native Toolkit",
   "directories": {
-    "lib": "lib"
+    "lib":"src/lib"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -32,12 +31,12 @@
     "typescript": "^5.0.2"
   },
   "files": [
-    "assets",
-    "lib",
-    "plugin",
-    "style",
-    "types",
-    "widgets",
-    "internal"
-  ]
+    "src"
+  ],
+  "exports": {
+    ".": "./src/index.ts",
+    "./lib/*": "./src/lib/*",
+    "./style/*": "./src/style/*",
+    "./widgets/*": "./src/widgets/*"
+  }
 }
